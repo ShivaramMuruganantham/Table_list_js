@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: url(images/login-bg.png);
+            background-size: cover;
+        }
+        .center{
+            display: flex;
+            /* justify-content: space-between; */
+        }
+        .div1{
+            align-content: center;
+            padding: 20px;
+            width: 100%;
+            /* background: #000; */
+        }
+        .div1 input{
+            margin: 10px 0px;
+            outline: none;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            color: #ffffff;
+        }
+        .flex{
+            display: block;
+            padding: 30px 50px;
+            
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            background-size: cover;
+            box-shadow: 0 0 20px rgb(181, 181, 183);
+            
+        }
+        .heading{
+            text-align: center;
+        }
+        .btn{
+            padding: 10px;
+            text-align: center;
+        }
+        table{
+            margin: 50px 10px;
+            
+            box-shadow: 0px 0px 12px rgb(111,94,193)
+        }
+        table,th,td{
+            border: 1px solid rgba(198, 198, 198, 0.692);
+            padding: 10px 20px;
+            border-collapse: collapse;
+        }
+        td{
+            text-align: left ;
+        }
+        .row1{
+            background-color: #ffffff !important;
+            /* text-align: center !important; */
+        }
+        tr:nth-child(even){
+            background-color: rgb(255, 255, 255);
+        }
+        tr:nth-child(odd){
+            background-color: rgba(245, 245, 245, 0.89);
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="center">
+        <div class="div1">
+            <form action="">
+                <div class="flex">
+                    <div class="heading">
+                        <h2>Check List</h2>
+                    </div>
+                    <label for="rollno">ID :</label><br>
+                    <input type="text" autocomplete="off" name="id" id="rollno"><br>
+                    <span><small id=""></small></span><br>
+                    <label for="avatar">Name :</label><br>
+                    <input type="text" autocomplete="off" name="name" id="avatar"><br>
+                    <span><small id=""></small></span><br>
+                    <label for="inbox">Email :</label><br>
+                    <input type="email" autocomplete="off" name="email" id="inbox"><br>
+                    <span><small id=""></small></span><br>
+                    <label for="mobile">Phone no :</label><br>
+                    <input type="tel" autocomplete="off" name="number" id="mobile">
+                    <span><small id=""></small></span><br>
+                
+                    <div class="btn">
+                        <button type="button" id="save" onclick="handclick()">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table id="myTable">
+            <thead>
+                <tr class="row1">
+                    <th>Id</th>                 
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone no</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="user_t">
+            </tbody>
+        </table>
+    </div>
+    
+
+    <script>
+        let users = [
+            {
+                "id" : "1",
+                "name" : "Vetrivel",
+                "email" : "Vetrivel01@gmail.com",
+                "phone" : "4179385901"
+            },
+            {
+                "id" : "2",
+                "name" : "Paneerselvam",
+                "email" : "Paneerselvam02@gmail.com",
+                "phone" : "5327763967"
+            },
+            {
+                "id" : "3",
+                "name" : "Barath",
+                "email" : "Barath03@gmai.com",
+                "phone" : "9527320806"
+            },
+            {
+                "id" : "4",
+                "name" : "Tamil",
+                "email" : "Tamil04@gmail.com",
+                "phone" : "2730934754"
+            },
+            {
+                "id" : "5",
+                "name" : "Lokesh",
+                "email" : "Lokesh05@gmail.com",
+                "phone" : "1949955364"
+            },
+            {
+                "id" : "6",
+                "name" : "Karthik",
+                "email" : "Karthik06@gmail.com",
+                "phone" : "9012314228"
+            },
+            {
+                "id" : "7",
+                "name" : "Shivaram",
+                "email" : "Shivaram07@gmail.com",
+                "phone" : "4686918596"
+            },
+            {
+                "id" : "8",
+                "name" : "Gowtham",
+                "email" : "Gowtham08@gmail.com",
+                "phone" : "7871149697"
+            },
+            {
+                "id" : "9",
+                "name" : "Divyakumar",
+                "email" : "Divyakumar09@gmail.com",
+                "phone" : "7631483572"
+            },
+            {
+                "id" : "10",
+                "name" : "Kishore",
+                "email" : "Kishore10@gmail.com",
+                "phone" : "9551333570"
+            }
+        ];
+
+        function handclick(){
+            let num = document.getElementById('rollno').value;
+            let person = document.getElementById('avatar').value;
+            let mail = document.getElementById('inbox').value;
+            let phn = document.getElementById('mobile').value;
+
+            let newObject = {
+                id : num,
+                name : person,
+                email : mail,
+                phone : phn
+            };
+            users.push(newObject);
+            console.log(users);
+
+            let table = document.getElementById('user_t');
+            let row = document.createElement('tr');
+            let id = document.createElement('td');
+            let name = document.createElement('td');
+            let email = document.createElement('td');
+            let phone = document.createElement('td');
+            let btnn = document.createElement('td');
+            
+            id.innerHTML = newObject.id;
+            name.innerHTML = newObject.name;
+            email.innerHTML = newObject.email;
+            phone.innerHTML = newObject.phone;
+            
+            let btn = document.createElement("button");
+            btn.innerHTML = 'Delete';
+            btn.addEventListener('click', function(){
+                row.remove();
+            });
+
+            btnn.appendChild(btn);
+
+            row.appendChild(id);
+            row.appendChild(name);
+            row.appendChild(email);
+            row.appendChild(phone);
+            row.appendChild(btnn);
+
+            if (document.getElementById('rollno').value != "" ){
+                table.append(row)
+            }
+
+            document.getElementById('rollno').value = "";
+            document.getElementById('avatar').value = "";
+            document.getElementById('inbox').value = "";
+            document.getElementById('mobile').value = "";
+        };
+        let ulen = users.length;
+        const para = document.getElementById("demo");
+        const table = document.getElementById("user_t");
+            for(let i = 0; i < ulen; i++ ){
+                let row = document.createElement('tr');
+                let id = document.createElement("td");
+                let name = document.createElement("td");
+                let email = document.createElement("td");
+                let phone = document.createElement("td");
+                let btnn = document.createElement("td");
+
+                id.innerHTML = users[i].id = i + 1;
+                name.innerHTML = users[i].name;
+                email.innerHTML = users[i].email;
+                phone.innerHTML = users[i].phone;
+
+                let btn = document.createElement("button");
+                btn.innerHTML = 'Delete';
+                btn.addEventListener('click',function(){
+                    row.remove();
+                });
+    
+                btnn.appendChild(btn);
+                
+                row.appendChild(id);
+                row.appendChild(name);
+                row.appendChild(email);
+                row.appendChild(phone);
+                row.appendChild(btnn);
+    
+                table.append(row)
+        }
+
+
+
+    </script>
+</body>
+</html>
